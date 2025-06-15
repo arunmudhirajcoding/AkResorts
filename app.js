@@ -3,8 +3,6 @@ if (process.env.NODE_ENV != "production") {
 } //env use in dev
 
 //all imports
-{
-
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -22,8 +20,6 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
 const app = express();
-
-}
 
 const dbUrl = process.env.ATLASDB_URL;
 const secret = process.env.SECRET;
