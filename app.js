@@ -1,21 +1,21 @@
-
-
 //all imports
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const methodOverride = require("method-override");
+const methodOverride = require("method-override"); // used to override standard post/get methods to put/delete in forms in frontend only for html forms
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
+//routes 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const flash = require("connect-flash");
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const User = require("./models/user.js");
+
+const session = require("express-session"); // used to store session data in server or database 
+const MongoStore = require("connect-mongo"); // used to store session data in mongodb
+const flash = require("connect-flash"); //used to  notification or toaast messages
+const passport = require("passport"); // used to authenticate user
+const LocalStrategy = require("passport-local"); // used to authenticate user with local strategy (i.e username and password) instead of oAuth like google or facebook. furthur strategy visit https://www.passportjs.org/docs/
+const User = require("./models/user.js"); // used to authenticate user with local strategy
 
 const app = express();
 if (process.env.NODE_ENV != "production") {
@@ -29,7 +29,6 @@ const store = MongoStore.create({
 	mongoUrl: dbUrl,
 	crypto: {
 		secret //from sessionoptions
-
 	},
 	touchAfter: 24 * 3600, //when any changes not done in session, it should not renew until any changes in server
 });
